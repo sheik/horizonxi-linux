@@ -16,10 +16,10 @@ echo "${bold}[*] Installing transmission-cli${normal}"
 echo "${bold}[i] If asked for password, enter your linux user password${normal}"
 sudo apt-get install -y transmission-cli
 
-echo "${bold}[*] Downloading GE-proton${normal}"
+echo "${bold}[*] Downloading wine-ge-custom${normal}"
 curl -L -O https://github.com/GloriousEggroll/wine-ge-custom/releases/download/GE-Proton7-35/wine-lutris-GE-Proton7-35-x86_64.tar.xz
 
-echo "${bold}[*] Extracting GE-proton${normal}"
+echo "${bold}[*] Extracting wine-ge-custom${normal}"
 tar -xJf wine-lutris-GE-Proton7-35-x86_64.tar.xz 
 
 echo "${bold}[*] Downloading HorizonXI${normal}"
@@ -33,382 +33,600 @@ unzip -q HorizonXI.zip
 
 
 # base64 encoded horizonxi.ini
-base64 -d <<EOF > horizonxi.ini
-Oy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo7IEFzaGl0YSB2NCBC
-b290IENvbmZpZ3VyYXRpb25zCjsKOyBUaGlzIGZpbGUgaG9sZHMgdGhlIHZhcmlvdXMgaW1wb3J0
-YW50IHNldHRpbmdzIHRoYXQgYXJlIHVzZWQgdG8gY29uZmlndXJlIEFzaGl0YS4gVGhpcyBmaWxl
-IGlzIAo7IGxvYWRlZCBhcyBzb29uIGFzIEFzaGl0YSBpcyBpbmplY3RlZCBpbnRvIEZpbmFsIEZh
-bnRhc3kgWEkuIFBsZWFzZSBlZGl0IHRoaXMgZmlsZSB3aXRoIGNhdXRpb24hCjstLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KOyBDb25maWd1cmF0aW9uIE5vdGVzCjsK
-OyAgIEV2ZXJ5IGNvbmZpZ3VyYXRpb24gc2V0dGluZyBpbiB0aGlzIGZpbGUgaXMgY29uc2lkZXJl
-ZCBvcHRpb25hbC4gVGhpcyBtZWFucyB0aGF0IEFzaGl0YSB3aWxsLAo7ICAgaW50ZXJuYWxseSwg
-YXR0ZW1wdCB0byB1c2UgZGVmYXVsdCB2YWx1ZXMgaWYgb25lIGlzIG5vdCBnaXZlbiBoZXJlLCBv
-ciBpZiB0aGUgb25lIGdpdmVuIGlzCjsgICBpbnZhbGlkLiAoSG93ZXZlciwgdGhpcyBkb2VzIG5v
-dCBtZWFuIHVzaW5nIGEgYmxhbmsgZmlsZSB3aWxsIHJlc3VsdCBpbiBhIHN1Y2Nlc3NmdWwgbGF1
-bmNoLikKOwo7ICAgRGVwZW5kaW5nIG9uIHlvdXIgc2V0dXAgYW5kIGlmIHlvdSdyZSBwbGF5aW5n
-IG9uIHJldGFpbCBvciBhIHByaXZhdGUgc2VydmVyLCBzb21lIHNldHRpbmdzIHdpbGwKOyAgIGJl
-IGV4cGVjdGVkIGluIHRoaXMgZmlsZSB0byBwcm9wZXJseSBydW4gdGhlIGdhbWUuCjstLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCjstLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KOyBhc2hpdGEubGF1bmNoZXIKOwo7IENvbnRhaW5zIGNv
-bmZpZ3VyYXRpb24gc2V0dGluZ3MgdXNlZCB3aXRoIHRoZSBBc2hpdGEgbGF1bmNoZXIuCjsKOyAg
-IGF1dG9jbG9zZSAtIChib29sZWFuKSBEZWZhdWx0OiAxCjsgICAgICAgU2V0cyBpZiB0aGUgbGF1
-bmNoZXIgc2hvdWxkIGF1dG9tYXRpY2FsbHkgY2xvc2UgYWZ0ZXIgc3VjY2Vzc2Z1bGx5IGxhdW5j
-aGluZyB0aGlzIGNvbmZpZ3VyYXRpb24uCjsKOyAgIG5hbWUgLSAoc3RyaW5nKSBEZWZhdWx0OiAo
-ZW1wdHkpCjsgICAgICAgVGhlIG5hbWUgb2YgdGhlIGNvbmZpZ3VyYXRpb24gdG8gZGlzcGxheSBp
-biB0aGUgbGF1bmNoZXIuCjsKOyAgICAgICBJZiBsZWZ0IGVtcHR5LCB0aGUgbGF1bmNoZXIgd2ls
-bCB1c2UgdGhlIGZpbGUgbmFtZSBpbnN0ZWFkLgo7LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tClthc2hpdGEubGF1bmNoZXJdCmF1dG9jbG9zZSAgID0gMQpuYW1lICAg
-ICAgICA9IEV4YW1wbGUgQ29uZmlndXJhdGlvbgoKOy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLQo7IGFzaGl0YS5ib290CjsKOyBDb250YWlucyBjb25maWd1cmF0aW9u
-IHNldHRpbmdzIHVzZWQgd2l0aCB0aGUgYm9vdCBsb2FkZXIgYW5kIGluaXRpYWwgc3RhcnR1cCBv
-ZiB0aGUgZ2FtZS4KOwo7ICAgZmlsZSAtIChzdHJpbmcpIERlZmF1bHQ6IChlbXB0eSkKOyAgICAg
-ICBTZXRzIHRoZSBib290IGZpbGUgdG8gbGF1bmNoIHRvIHN0YXJ0IEZpbmFsIEZhbnRhc3kgWEku
-CjsKOyAgICAgICBJZiBwbGF5aW5nIG9uIHJldGFpbCwgdGhpcyBjYW4gYmUgbGVmdCBlbXB0eS4g
-QXNoaXRhIHdpbGwgYXV0b21hdGljYWxseSBmaW5kIGEgdmFsaWQgaW5zdGFsbAo7ICAgICAgIGFu
-ZCBsYXVuY2ggdGhlIGdhbWUuIEhvd2V2ZXIsIHlvdSBtYXkgd2FudCB0byBkaXJlY3RseSBzZXQg
-dGhpcyBzdGlsbCBpZiB5b3UgaGF2ZSBtdWx0aXBsZQo7ICAgICAgIGdhbWUgaW5zdGFsbHMgb2Yg
-RkZYSS4KOwo7ICAgICAgIElmIHBsYXlpbmcgb24gYSBwcml2YXRlIHNlcnZlciwgdGhpcyBzaG91
-bGQgcG9pbnQgdG8gdGhlIGJvb3QgbG9hZGVyIHVzZWQgd2l0aCB0aGUgc2VydmVyLgo7CjsgICBj
-b21tYW5kIC0gKHN0cmluZykgRGVmYXVsdDogL2dhbWUgZUFaY0ZjQgo7ICAgICAgIFNldHMgdGhl
-IGJvb3QgY29tbWFuZCB0aGF0IGlzIHBhc3NlZCB0byB0aGUgYm9vdCBsb2FkZXIgKGZpbGUpIG9u
-IGxhdW5jaC4KOwo7ICAgICAgIElmIHBsYXlpbmcgb24gcmV0YWlsLCB0aGlzIGNhbiBiZSBsZWZ0
-IGVtcHR5IG9yIHNldCB0byAnL2dhbWUgZUFaY0ZjQicgdG8gc2hvdyB0aGUgcXVpY2stcGxheQo7
-ICAgICAgIGljb24gaW5zaWRlIG9mIFBsYXlPbmxpbmUgdG8gbG9nIGludG8gRkZYSSBmYXN0ZXIu
-CjsKOyAgICAgICBJZiBwbGF5aW5nIG9uIGEgcHJpdmF0ZSBzZXJ2ZXIsIHRoaXMgc2hvdWxkIGJl
-IHRoZSBjb21tYW5kcyByZXF1aXJlZCBieSB0aGUgc2VydmVyIHlvdSBhcmUKOyAgICAgICBwbGF5
-aW5nIG9uIGluIG9yZGVyIHRvIHByb3Blcmx5IGNvbm5lY3QuIChVc3VhbGx5IHRoZSAnLS1zZXJ2
-ZXIgPGlwPicgY29tbWFuZCBpcyBlbm91Z2guKQo7CjsgICBnYW1lbW9kdWxlIC0gKHN0cmluZykg
-RGVmYXVsdDogKGVtcHR5KQo7ICAgICAgIFNldHMgdGhlIG5hbWUgb2YgdGhlIG1haW4gZ2FtZSBt
-b2R1bGUgQXNoaXRhIHNob3VsZCB1c2Ugd2hlbiBkb2luZyBnYW1lIG1vZHVsZSBsb29rdXBzLgo7
-CjsgICAgICAgSWYgbGVmdCBibGFuaywgdGhpcyB3aWxsIHJlc29sdmUgdG8gJ0ZGWGlNYWluLmRs
-bCcuIFRoaXMgc2hvdWxkIG9ubHkgYmUgY2hhbmdlZCBpZiB0aGUgcHJpdmF0ZQo7ICAgICAgIHNl
-cnZlciB5b3UgYXJlIHBsYXlpbmcgb24gaGFzIHJlbmFtZWQgJ0ZGWGlNYWluLmRsbCcgdG8gc29t
-ZXRoaW5nIGVsc2UuCjsKOyAgIHNjcmlwdCAtIChzdHJpbmcpIERlZmF1bHQ6IChlbXB0eSkKOyAg
-ICAgICBTZXRzIHRoZSBzY3JpcHQgZmlsZSB0byBleGVjdXRlIGFmdGVyIEFzaGl0YSBoYXMgc3Vj
-Y2Vzc2Z1bGx5IGluamVjdGVkIGludG8gdGhlIGdhbWUuCjsKOyAgICAgICBJZiBsZWZ0IGJsYW5r
-LCBBc2hpdGEgd2lsbCBub3QgZXhlY3V0ZSBhbnkgc2NyaXB0IGF1dG9tYXRpY2FsbHkuCjsKOyAg
-IGFyZ3MgLSAoc3RyaW5nKSBEZWZhdWx0OiAoZW1wdHkpCjsgICAgICAgU2V0cyB0aGUgc2NyaXB0
-IGFyZ3VtZW50cyB0byBwYXNzIHRvIHRoZSAnc2NyaXB0JyAoaWYgc2V0KSBhYm92ZSB3aGVuIGl0
-J3MgZXhlY3V0ZWQuCjsKOyAgICAgICBUaGlzIGNhbiBiZSB1c2VmdWwgaWYgeW91IHNoYXJlIGEg
-c2NyaXB0IGJldHdlZW4gbXVsdGlwbGUgY2hhcmFjdGVycywgYnV0IHdhbnQgdG8gdXNlIHNwZWNp
-ZmljCjsgICAgICAgdmFsdWVzIGZvciB0b2tlbiByZXBsYWNlbWVudHMuIFN1Y2ggYXMgYmluZHMv
-YWxpYXNlcyB0aGF0IHVzZSB0aGUgcHJvZmlsZXMgc3BlY2lmaWMgY2hhcmFjdGVyIG5hbWUuCjst
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KW2FzaGl0YS5ib290XQo7
-IFJldGFpbCBTZXJ2ZXIgVXNhZ2UKZmlsZSAgICAgICAgPSAuXFxib290bG9hZGVyXFxob3Jpem9u
-LWxvYWRlci5leGUKY29tbWFuZCAgICAgPSAtLXNlcnZlciBiZXRhYm94Lmhvcml6b254aS5jb20g
-LS11c2VyICVVU0VSJSAtLXBhc3MgJVBBU1NXT1JEJSAKZ2FtZW1vZHVsZSAgPSBmZnhpbWFpbi5k
-bGwKc2NyaXB0ICAgICAgPSBkZWZhdWx0LnR4dAphcmdzICAgICAgICA9IAoKOy0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo7IGFzaGl0YS5sYW5ndWFnZQo7CjsgQ29u
-dGFpbnMgY29uZmlndXJhdGlvbiBzZXR0aW5ncyB1c2VkIHRvIGRldGVybWluZSB3aGljaCBsYW5n
-dWFnZSBkYXRhIGlzIHVzZWQgZm9yIGRlZmF1bHRzLgo7CjsgICBwbGF5b25saW5lIC0gKG51bWJl
-cikgRGVmYXVsdDogMgo7ICAgICAgIFNldHMgdGhlIGRlZmF1bHQgUGxheU9ubGluZSBsYW5ndWFn
-ZSB0aGUgbGF1bmNoZXIgd2lsbCB1c2Ugd2hlbiB0cnlpbmcgdG8gbGF1bmNoIHJldGFpbAo7ICAg
-ICAgIGFuZCBubyBkaXJlY3QgYm9vdCBmaWxlIHdhcyBnaXZlbi4KOwo7ICAgICAgIFZhbGlkIHZh
-bHVlcyBhcmU6CjsgICAgICAgICAgIDAgPSBEZWZhdWx0LCAxID0gSmFwYW5lc2UsIDIgPSBFbmds
-aXNoLCAzID0gRXVyb3BlYW4KOwo7ICAgICAgIElmIHNldCB0byAwLCBBc2hpdGEgd2lsbCBkZWZh
-dWx0IHRvIEVuZ2xpc2guCjsKOyAgIGFzaGl0YSAtIChudW1iZXIpIERlZmF1bHQ6IDIKOyAgICAg
-ICBTZXRzIHRoZSBkZWZhdWx0IGxhbmd1YWdlIHVzZWQgd2l0aCB0aGUgaW50ZXJuYWwgUmVzb3Vy
-Y2VNYW5hZ2VyIHN0cmluZyBkYXRhLgo7CjsgICAgICAgVmFsaWQgdmFsdWVzIGFyZToKOyAgICAg
-ICAgICAgMCA9IERlZmF1bHQsIDEgPSBKYXBhbmVzZSwgMiA9IEVuZ2xpc2gsIDMgPSBFdXJvcGVh
-bgo7CjsgICAgICAgSWYgc2V0IHRvIDAgb3IgMywgQXNoaXRhIHdpbGwgZGVmYXVsdCB0byBFbmds
-aXNoLiAoU0Ugbm8gbG9uZ2VyIHRyYW5zbGF0ZXMgc3RyaW5ncyB0byBFdXJvcGVhbi4pCjstLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KW2FzaGl0YS5sYW5ndWFnZV0K
-cGxheW9ubGluZSAgPSAyCmFzaGl0YSAgICAgID0gMgoKOy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLQo7IGFzaGl0YS5sb2dnaW5nCjsKOyBDb250YWlucyBjb25maWd1
-cmF0aW9uIHNldHRpbmdzIHVzZWQgZm9yIEFzaGl0YSdzIGRlYnVnZ2luZy9sb2dnaW5nIGZlYXR1
-cmVzLgo7CjsgICBsZXZlbCAtIChudW1iZXIpIERlZmF1bDogNQo7ICAgICAgIFNldHMgdGhlIGxl
-dmVsIG9mIGRlYnVnZ2luZyBpbmZvcm1hdGlvbiBBc2hpdGEgd2lsbCBvdXRwdXQgdG8gaXRzIGxv
-ZyBmaWxlcy4KOwo7ICAgICAgIFZhbGlkIHZhbHVlcyBhcmU6CjsgICAgICAgICAgIDAgPSBOb25l
-LCAxID0gQ3JpdGljYWwsIDIgPSBFcnJvciwgMyA9IFdhcm4sIDQgPSBJbmZvLCA1ID0gRGVidWcK
-Owo7ICAgY3Jhc2hkdW1wcyAtIChib29sZWFuKSBEZWZhdWx0OiAxCjsgICAgICAgU2V0cyBpZiBB
-c2hpdGEgc2hvdWxkIGNyZWF0ZSBjcmFzaCBkdW1wcyBhdXRvbWF0aWNhbGx5IHdoZW4gYSBjcml0
-aWNhbCBlcnJvciBvY2N1cnMuCjstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0KW2FzaGl0YS5sb2dnaW5nXQpsZXZlbCAgICAgICA9IDUKY3Jhc2hkdW1wcyAgPSAxCgo7
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCjsgYXNoaXRhLnRhc2tw
-b29sCjsKOyBDb250YWlucyBjb25maWd1cmF0aW9uIHNldHRpbmdzIHVzZWQgd2l0aCBBc2hpdGEn
-cyBpbnRlcm5hbCB0YXNrIHF1ZXVlIHN5c3RlbS4KOwo7ICAgdGhyZWFkY291bnQgLSAobnVtYmVy
-KSBEZWZhdWx0OiAtMQo7ICAgICAgIFNldHMgdGhlIG1heGltdW0gbnVtYmVyIG9mIHRocmVhZHMg
-dGhlIHRhc2sgcXVldWUgd2lsbCBhdHRlbXB0IHRvIHVzZS4KOwo7ICAgICAgIElmIHNldCB0byAw
-IG9yIGxvd2VyLCB0aGUgaW50ZXJuYWwgdGFzayBxdWV1ZSB3aWxsIHF1ZXJ5IHRoZSBzeXN0ZW0g
-Zm9yIHRoZSBhdmFpbGFibGUgbnVtYmVyIG9mCjsgICAgICAgbG9naWNhbCBjb3JlcyBhbmQgZGV0
-ZXJtaW5lIHRoZSBiZXN0IG51bWJlciBvZiB0aHJlYWRzIHRvIHVzZS4gSXQgaXMgcmVjb21tZW5k
-ZWQgdG8gbGVhdmUgdGhpcwo7ICAgICAgIGFzIC0xIGFuZCBsZXQgdGhlIHN5c3RlbSBkZXRlcm1p
-bmUgdGhlIGJlc3QgbnVtYmVyIGl0c2VsZi4KOy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLQpbYXNoaXRhLnRhc2twb29sXQp0aHJlYWRjb3VudCA9IDI0IAoKOy0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo7IGFzaGl0YS5yZXNvdXJjZXMK
-Owo7IENvbnRhaW5zIGNvbmZpZ3VyYXRpb24gc2V0dGluZ3MgdXNlZCB3aXRoIEFzaGl0YSdzIGN1
-c3RvbSByZXNvdXJjZSBkYXRhIG92ZXJyaWRlIGNvbmZpZ3VyYXRpb24gZmlsZXMuCjsKOyAgIG9m
-ZnNldHMudXNlX292ZXJyaWRlcyAtIChib29sZWFuKSBEZWZhdWx0OiAxCjsgICAgICAgU2V0cyBp
-ZiBBc2hpdGEgc2hvdWxkIGxvYWQgYW5kIG1lcmdlIGluIHRoZSBjdXN0b20gb3ZlcnJpZGVzIHdp
-dGhpbiB0aGUgJ2N1c3RvbS5vZmZzZXRzLmluaScKOyAgICAgICBjb25maWd1cmF0aW9uIGZpbGUu
-CjsKOyAgIHBvaW50ZXJzLnVzZV9vdmVycmlkZXMgLSAoYm9vbGVhbikgRGVmYXVsdDogMQo7ICAg
-ICAgIFNldHMgaWYgQXNoaXRhIHNob3VsZCBsb2FkIGFuZCBtZXJnZSBpbiB0aGUgY3VzdG9tIG92
-ZXJyaWRlcyB3aXRoaW4gdGhlICdjdXN0b20ucG9pbnRlcnMuaW5pJwo7ICAgICAgIGNvbmZpZ3Vy
-YXRpb24gZmlsZS4KOwo7ICAgcmVzb3VyY2VzLnVzZV9vdmVycmlkZXMgLSAoYm9vbGVhbikgRGVm
-YXVsdDogMQo7ICAgICAgIFNldHMgaWYgQXNoaXRhIHNob3VsZCBsb2FkIGFuZCBtZXJnZSBpbiB0
-aGUgY3VzdG9tIG92ZXJyaWRlcyB3aXRoaW4gdGhlICdjdXN0b20ucmVzb3VyY2VzLmluaScKOyAg
-ICAgICBjb25maWd1cmF0aW9uIGZpbGUuCjstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0KW2FzaGl0YS5yZXNvdXJjZXNdCm9mZnNldHMudXNlX292ZXJyaWRlcyAgID0g
-MQpwb2ludGVycy51c2Vfb3ZlcnJpZGVzICA9IDEKcmVzb3VyY2VzLnVzZV9vdmVycmlkZXMgPSAx
-Cgo7LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCjsgYXNoaXRhLndp
-bmRvdy5zdGFydHBvcwo7CjsgQ29udGFpbnMgY29uZmlndXJhdGlvbiBzZXR0aW5ncyB1c2VkIHRv
-IHNldCB0aGUgc3RhcnR1cCBwb3NpdGlvbiBvZiB0aGUgZ2FtZSB3aW5kb3cuCjsKOyAgIHggLSAo
-bnVtYmVyKSBEZWZhdWx0OiAtMQo7ICAgICAgIFNldHMgdGhlIFggc2NyZWVuIHBvc2l0aW9uIHRv
-IHN0YXJ0IHRoZSBnYW1lIHdpbmRvdyBhdC4KOwo7ICAgICAgIElmIHNldCB0byAtMSwgd2lsbCB1
-c2UgdGhlIGNlbnRlciBYIHBvc2l0aW9uIG9mIHRoZSBzY3JlZW4uCjsKOyAgIHkgLSAobnVtYmVy
-KSBEZWZhdWx0OiAtMQo7ICAgICAgIFNldHMgdGhlIFkgc2NyZWVuIHBvc2l0aW9uIHRvIHN0YXJ0
-IHRoZSBnYW1lIHdpbmRvdyBhdC4KOwo7ICAgICAgIElmIHNldCB0byAtMSwgd2lsbCB1c2UgdGhl
-IGNlbnRlciBZIHBvc2l0aW9uIG9mIHRoZSBzY3JlZW4uCjstLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0KW2FzaGl0YS53aW5kb3cuc3RhcnRwb3NdCnggPSAtMQp5ID0g
-LTEKCjstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KOyBhc2hpdGEu
-aW5wdXQKOwo7IENvbnRhaW5zIGNvbmZpZ3VyYXRpb24gc2V0dGluZ3MgdXNlZCB3aXRoIHRoZSB2
-YXJpb3VzIGlucHV0IGRldmljZXMgdG8gaW50ZXJhY3Qgd2l0aCB0aGUgZ2FtZS4KOwo7ICAgZ2Ft
-ZXBhZC5hbGxvd2JhY2tncm91bmQgLSAoYm9vbGVhbikgRGVmYXVsdDogMAo7ICAgICAgIFNldHMg
-aWYgY29udHJvbGxlcnMgc2hvdWxkIHN0aWxsIHdvcmsgaWYgdGhlIGdhbWUgaXMgb3V0IG9mIGZv
-Y3VzLgo7CjsgICBnYW1lcGFkLmRpc2FibGVlbnVtZXJhdGlvbiAtIChib29sZWFuKSBEZWZhdWx0
-OiAwCjsgICAgICAgU2V0cyBpZiBBc2hpdGEgc2hvdWxkIGRpc2FibGUgdGhlIGFiaWxpdHkgZm9y
-IGdhbWUgY29udHJvbGxlcnMgdG8gYmUgZGlzY292ZXJlZC4KOwo7ICAgICAgIFRoaXMgaXMgdXNl
-ZnVsIHRvIHR1cm4gb24gaWYgeW91IGxlYXZlIGNvbnRyb2xsZXJzIGVuYWJsZWQgYnV0IG5vdCB1
-c2Ugb25lLiBZb3UgbWF5IG5vdGljZSBhCjsgICAgICAgbWljcm8tc3R1dHRlciB3aGlsZSBwbGF5
-aW5nLiBUdXJuaW5nIHRoaXMgb24gd2lsbCB1c3VhbGx5IGZpeCB0aGF0IG1pY3JvLXN0dXR0ZXIu
-IEhvd2V2ZXIsIHdoaWxlCjsgICAgICAgdGhpcyBpcyBvbiwgeW91IHdpbGwgbm90IGJlIGFibGUg
-dG8gdXNlIGEgY29udHJvbGxlciB1bnRpbCBpdHMgdHVybmVkIG9mZi4KOwo7ICAga2V5Ym9hcmQu
-YmxvY2tpbnB1dCAtIChib29sZWFuKSBEZWZhdWx0OiAwCjsgICAgICAgU2V0cyBpZiBBc2hpdGEg
-c2hvdWxkIGNvbXBsZXRlbHkgZGlzYWJsZSBhbGwga2V5Ym9hcmQgaW5wdXQuCjsKOyAgIGtleWJv
-YXJkLmJsb2NrYmluZHNkdXJpbmdpbnB1dCAtIChib29sZWFuKSBEZWZhdWx0OiAxCjsgICAgICAg
-U2V0cyBpZiBBc2hpdGEgc2hvdWxkIGlnbm9yZSBrZXliaW5kcyB3aGlsZSB0aGUgZ2FtZSBpcyBl
-eHBlY3RpbmcgaW5wdXQuCjsKOyAgICAgICBUaGlzIHdpbGwgYmxvY2sga2V5YmluZHMgd2hpbGUg
-ZW50ZXJpbmcgY2hhdCBpbnRvIHRoZSBjaGF0IGJveCwgb3IgZWRpdGluZyB0aGluZ3MgbGlrZSBz
-ZWFyY2gKOyAgICAgICBjb21tZW50cywgYmF6YWFyIGNvbW1lbnRzLCBldGMuCjsKOyAgIGtleWJv
-YXJkLnNpbGVudGJpbmRzIC0gKGJvb2xlYW4pIERlZmF1bHQ6IDAKOyAgICAgICBTZXRzIGlmIEFz
-aGl0YSBzaG91bGQgYW5ub3VuY2UgYmluZCByZWxhdGVkIGluZm9ybWF0aW9uLCBzdWNoIGFzIHNl
-dHRpbmcgYSBuZXcga2V5YmluZC4KOwo7ICAgICAgIElmIGVuYWJsZWQsIEFzaGl0YSB3aWxsIG5v
-dCBwcmludCBiaW5kIHJlbGF0ZWQgbWVzc2FnZXMgdG8gdGhlIGNoYXQgbG9nLgo7CjsgICBrZXli
-b2FyZC53aW5kb3dza2V5ZW5hYmxlZCAtIChib29sZWFuKSBEZWZhdWx0OiAwCjsgICAgICAgU2V0
-cyBpZiB0aGUgV2luZG93cyBrZXkgc2hvdWxkIGJlIGVuYWJsZWQgYW5kIHdvcmsgbGlrZSBub3Jt
-YWwuCjsKOyAgIG1vdXNlLmJsb2NraW5wdXQgLSAoYm9vbGVhbikgRGVmYXVsdDogMAo7ICAgICAg
-IFNldHMgaWYgQXNoaXRhIHNob3VsZCBjb21wbGV0ZWx5IGJsb2NrIGFsbCBtb3VzZSBpbnB1dC4K
-Owo7ICAgbW91c2UudW5ob29rIC0gKGJvb2xlYW4pIERlZmF1bHQ6IDEKOyAgICAgICBTZXRzIGlm
-IEFzaGl0YSBzaG91bGQgdW5ob29rIHRoZSBtb3VzZSBmcm9tIGJlaW5nIGF1dG9tYXRpY2FsbHkg
-cmVwb3NpdGlvbmVkIGJ5IHRoZSBnYW1lCjsgICAgICAgbWVudSBzeXN0ZW0uCjstLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KW2FzaGl0YS5pbnB1dF0KZ2FtZXBhZC5h
-bGxvd2JhY2tncm91bmQgICAgICAgICA9IDAKZ2FtZXBhZC5kaXNhYmxlZW51bWVyYXRpb24gICAg
-ICA9IDAKa2V5Ym9hcmQuYmxvY2tpbnB1dCAgICAgICAgICAgICA9IDAKa2V5Ym9hcmQuYmxvY2ti
-aW5kc2R1cmluZ2lucHV0ICA9IDEKa2V5Ym9hcmQuc2lsZW50YmluZHMgICAgICAgICAgICA9IDAK
-a2V5Ym9hcmQud2luZG93c2tleWVuYWJsZWQgICAgICA9IDAKbW91c2UuYmxvY2tpbnB1dCAgICAg
-ICAgICAgICAgICA9IDAKbW91c2UudW5ob29rICAgICAgICAgICAgICAgICAgICA9IDEKCjstLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KOyBhc2hpdGEubWlzYwo7Cjsg
-Q29udGFpbnMgY29uZmlndXJhdGlvbiBzZXR0aW5ncyB1c2VkIGZvciB2YXJpb3VzIEFzaGl0YSBy
-ZWxhdGVkIHNldHRpbmdzLgo7CjsgICBhZGRvbnMuc2lsZW50IC0gKGJvb2xlYW4pIERlZmF1bHQ6
-IDAKOyAgICAgICBTZXRzIGlmIEFzaGl0YSBzaG91bGQgc3RvcCBhbm5vdW5jaW5nIGxvYWRpbmcg
-YW5kIHVubG9hZGluZyBhZGRvbnMgdG8gdGhlIGNoYXQgd2luZG93Lgo7CjsgICBhbGlhc2VzLnNp
-bGVudCAtIChib29sZWFuKSBEZWZhdWx0OiAwCjsgICAgICAgU2V0cyBpZiBBc2hpdGEgc2hvdWxk
-IHN0b3AgYW5ub3VuY2luZyBhbGlhcyByZWxhdGVkIGNvbW1hbmQgcmVzdWx0cyB0byB0aGUgY2hh
-dCB3aW5kb3cuCjsKOyAgIHBsdWdpbnMuc2lsZW50IC0gKGJvb2xlYW4pIERlZmF1bHQ6IDAKOyAg
-ICAgICBTZXRzIGlmIEFzaGl0YSBzaG91bGQgc3RvcCBhbm5vdW5jaW5nIGxvYWRpbmcgYW5kIHVu
-bG9hZGluZyBwbHVnaW5zIHRvIHRoZSBjaGF0IHdpbmRvdy4KOy0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpbYXNoaXRhLm1pc2NdCmFkZG9ucy5zaWxlbnQgICA9IDAK
-YWxpYXNlcy5zaWxlbnQgID0gMApwbHVnaW5zLnNpbGVudCAgPSAwCgo7LS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCjsgYXNoaXRhLnBvbHBsdWdpbnMKOwo7IENvbnRh
-aW5zIHRoZSBsaXN0IG9mIHBsdWdpbnMgQXNoaXRhIHdpbGwgbGF1bmNoIGltbWVkaWF0ZWx5IGFz
-IGl0IGluamVjdHMuIChJUG9sUGx1Z2luIGluc3RhbmNlcy4pCjsgTm90ZTogVGhpcyBkb2VzIG5v
-dCB3b3JrIGZvciBub3JtYWwgcGx1Z2lucyEgVGhpcyB3aWxsIG9ubHkgd29yayBmb3IgJ1BsYXlP
-bmxpbmUgUGx1Z2lucycuCjsKOyBUaGUgZm9sbG93aW5nIGZvcm1hdCBpcyBleHBlY3RlZCBmb3Ig
-ZW50cmllcyBpbiB0aGlzIHNlY3Rpb246CjsKOyAgIFthc2hpdGEucG9scGx1Z2luc10KOyAgIHNh
-bmRib3ggPSAxCjsKOyBUaGUga2V5IHNob3VsZCBiZSB0aGUgbmFtZSBvZiB0aGUgcGx1Z2luIHRo
-YXQgc2hvdWxkIGJlIGxvYWRlZC4gVGhlIHZhbHVlIGlzIGEgYm9vbGVhbiB3aGljaCBzdGF0ZXMg
-CjsgaWYgdGhlIHBsdWdpbiBpcyBlbmFibGVkIG9yIG5vdC4KOy0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpbYXNoaXRhLnBvbHBsdWdpbnNdCnNhbmRib3ggPSAxCnBp
-dm90ID0gMQo7LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCjsgYXNo
-aXRhLnBvbHBsdWdpbnMuYXJncwo7CjsgQ29udGFpbnMgdGhlIHBsdWdpbi1zcGVjaWZpYyBhcmd1
-bWVudHMgdG8gcGFzcyB0byBhICdQbGF5T25saW5lIFBsdWdpbicgd2hlbiBpdHMgbG9hZGVkLgo7
-CjsgVGhlIGZvbGxvd2luZyBmb3JtYXQgaXMgZXhwZWN0ZWQgZm9yIGVudHJpZXMgaW4gdGhpcyBz
-ZWN0aW9uOgo7CjsgICBbYXNoaXRhLnBvbHBsdWdpbnMuYXJnc10KOyAgIHNhbmRib3ggPSBhcmdz
-MSBhcmdzMiBhcmdzMyBhcmdzNAo7CjsgVGhlIGtleSBzaG91bGQgYmUgdGhlIG5hbWUgb2YgdGhl
-IHBsdWdpbiB0aGF0IGlzIGJlaW5nIGxvYWRlZC4gVGhlIHZhbHVlIHNob3VsZCBiZSBhIHN0cmlu
-ZyBjb250YWluaW5nCjsgdGhlIGFyZ3VtZW50cyB0byBwYXNzIHRvIHRoZSBwbHVnaW4uIEluIG1v
-c3QgY2FzZXMsIHBsdWdpbnMgd2lsbCBub3QgcmVxdWlyZSBhbnkgYXJndW1lbnRzIGluIG9yZGVy
-IHRvCjsgbG9hZCBhbmQgb3BlcmF0ZSBwcm9wZXJseS4gUGxlYXNlIHNlZSB0aGUgaW5kaXZpZHVh
-bCBwbHVnaW5zIGRvY3VtZW50YXRpb24gZm9yIGFueSByZXF1aXJlbWVudHMgdGhhdAo7IG1heSBi
-ZSBuZWVkZWQgaGVyZS4KOy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LQpbYXNoaXRhLnBvbHBsdWdpbnMuYXJnc10KO3NhbmRib3ggPSAKCjstLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KOyBmZnhpLmRpcmVjdDNkOAo7CjsgQ29udGFpbnMg
-Y29uZmlndXJhdGlvbiBzZXR0aW5ncyB1c2VkIHRvIG92ZXJyaWRlIERpcmVjdDNEOCBkZXZpY2Ug
-Y3JlYXRpb24gcGFyYW1ldGVycy4KOyBOb3RlOiBUaGlzIGlzIGZvciBhZHZhbmNlZCB1c2VycyBv
-bmx5ISBFZGl0IHdpdGggY2F1dGlvbiEKOwo7ICAgcHJlc2VudHBhcmFtcy5iYWNrYnVmZmVyZm9y
-bWF0IC0gKG51bWJlcikgRGVmYXVsdDogLTEKOyAgICAgICBTZXRzIHRoZSBiYWNrIGJ1ZmZlciBm
-b3JtYXQgcGFzc2VkIHdpdGggdGhlIGRldmljZSBjcmVhdGlvbiBwcmVzZW50IHBhcmFtZXRlcnMu
-CjsKOyAgICAgICBJZiBzZXQgdG8gLTEsIHRoZSBnYW1lIHdpbGwgdXNlIHRoZSBjdXJyZW50IHZh
-bHVlIGFscmVhZHkgc2V0Lgo7CjsgICBwcmVzZW50cGFyYW1zLmJhY2tidWZmZXJjb3VudCAtIChu
-dW1iZXIpIERlZmF1bHQ6IC0xCjsgICAgICAgU2V0cyB0aGUgYmFjayBidWZmZXIgY291bnQgcGFz
-c2VkIHdpdGggdGhlIGRldmljZSBjcmVhdGlvbiBwcmVzZW50IHBhcmFtZXRlcnMuCjsKOyAgICAg
-ICBJZiBzZXQgdG8gLTEsIHRoZSBnYW1lIHdpbGwgdXNlIHRoZSBjdXJyZW50IHZhbHVlIGFscmVh
-ZHkgc2V0Lgo7CjsgICBwcmVzZW50cGFyYW1zLm11bHRpc2FtcGxldHlwZSAtIChudW1iZXIpIERl
-ZmF1bHQ6IC0xCjsgICAgICAgU2V0cyB0aGUgbXVsdGlzYW1wbGUgdHlwZSBwYXNzZWQgd2l0aCB0
-aGUgZGV2aWNlIGNyZWF0aW9uIHByZXNlbnQgcGFyYW1ldGVycy4KOwo7ICAgICAgIElmIHNldCB0
-byAtMSwgdGhlIGdhbWUgd2lsbCB1c2UgdGhlIGN1cnJlbnQgdmFsdWUgYWxyZWFkeSBzZXQuCjsK
-OyAgIHByZXNlbnRwYXJhbXMuc3dhcGVmZmVjdCAtIChudW1iZXIpIERlZmF1bHQ6IC0xCjsgICAg
-ICAgU2V0cyB0aGUgc3dhcCBlZmZlY3QgcGFzc2VkIHdpdGggdGhlIGRldmljZSBjcmVhdGlvbiBw
-cmVzZW50IHBhcmFtZXRlcnMuCjsKOyAgICAgICBJZiBzZXQgdG8gLTEsIHRoZSBnYW1lIHdpbGwg
-dXNlIHRoZSBjdXJyZW50IHZhbHVlIGFscmVhZHkgc2V0Lgo7CjsgICBwcmVzZW50cGFyYW1zLmVu
-YWJsZWF1dG9kZXB0aHN0ZW5jaWwgLSAobnVtYmVyKSBEZWZhdWx0OiAtMQo7ICAgICAgIFNldHMg
-dGhlIGF1dG8tZGVwdGggc3RlbmNpbCBlbmFibGVkIGZsYWcgcGFzc2VkIHdpdGggdGhlIGRldmlj
-ZSBjcmVhdGlvbiBwcmVzZW50IHBhcmFtZXRlcnMuCjsKOyAgICAgICBJZiBzZXQgdG8gLTEsIHRo
-ZSBnYW1lIHdpbGwgdXNlIHRoZSBjdXJyZW50IHZhbHVlIGFscmVhZHkgc2V0Lgo7CjsgICBwcmVz
-ZW50cGFyYW1zLmF1dG9kZXB0aHN0ZW5jaWxmb3JtYXQgLSAobnVtYmVyKSBEZWZhdWx0OiAtMQo7
-ICAgICAgIFNldHMgdGhlIGF1dG8tZGVwdGggc3RlbmNpbCBmb3JtYXQgcGFzc2VkIHdpdGggdGhl
-IGRldmljZSBjcmVhdGlvbiBwcmVzZW50IHBhcmFtZXRlcnMuCjsKOyAgICAgICBJZiBzZXQgdG8g
-LTEsIHRoZSBnYW1lIHdpbGwgdXNlIHRoZSBjdXJyZW50IHZhbHVlIGFscmVhZHkgc2V0Lgo7Cjsg
-ICBwcmVzZW50cGFyYW1zLmZsYWdzIC0gKG51bWJlcikgRGVmYXVsdDogLTEKOyAgICAgICBTZXRz
-IHRoZSBmbGFncyBwYXNzZWQgd2l0aCB0aGUgZGV2aWNlIGNyZWF0aW9uIHByZXNlbnQgcGFyYW1l
-dGVycy4KOwo7ICAgICAgIElmIHNldCB0byAtMSwgdGhlIGdhbWUgd2lsbCB1c2UgdGhlIGN1cnJl
-bnQgdmFsdWUgYWxyZWFkeSBzZXQuCjsKOyAgIHByZXNlbnRwYXJhbXMuZnVsbHNjcmVlbl9yZWZy
-ZXNocmF0ZWluaHogLSAobnVtYmVyKSBEZWZhdWx0OiAtMQo7ICAgICAgIFNldHMgdGhlIGZ1bGxz
-Y3JlZW4gcmVmcmVzaCByYXRlIHBhc3NlZCB3aXRoIHRoZSBkZXZpY2UgY3JlYXRpb24gcHJlc2Vu
-dCBwYXJhbWV0ZXJzLgo7CjsgICAgICAgSWYgc2V0IHRvIC0xLCB0aGUgZ2FtZSB3aWxsIHVzZSB0
-aGUgY3VycmVudCB2YWx1ZSBhbHJlYWR5IHNldC4KOwo7ICAgcHJlc2VudHBhcmFtcy5mdWxsc2Ny
-ZWVuX3ByZXNlbnRhdGlvbmludGVydmFsIC0gKG51bWJlcikgRGVmYXVsdDogLTEKOyAgICAgICBT
-ZXRzIHRoZSBmdWxsc2NyZWVuIHByZXNlbnRhdGlvbiBpbnRlcnZhbCBwYXNzZWQgd2l0aCB0aGUg
-ZGV2aWNlIGNyZWF0aW9uIHByZXNlbnQgcGFyYW1ldGVycy4KOwo7ICAgICAgIElmIHNldCB0byAt
-MSwgdGhlIGdhbWUgd2lsbCB1c2UgdGhlIGN1cnJlbnQgdmFsdWUgYWxyZWFkeSBzZXQuCjsKOyAg
-IGJlaGF2aW9yZmxhZ3MuZnB1X3ByZXNlcnZlIC0gKG51bWJlcikgRGVmYXVsdDogMAo7ICAgICAg
-IFNldHMgaWYgdGhlIGZwdSBwcmVzZXJ2ZSBiZWhhdmlvciBmbGFnIGlzIGVuYWJsZWQgYnkgZm9y
-Y2UuCjsKOyAgICAgICBJZiBzZXQgdG8gLTEsIHRoZSBnYW1lIHdpbGwgdXNlIHRoZSBjdXJyZW50
-IHZhbHVlIGFscmVhZHkgc2V0Lgo7LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tCltmZnhpLmRpcmVjdDNkOF0KcHJlc2VudHBhcmFtcy5iYWNrYnVmZmVyZm9ybWF0ICAg
-ICAgICAgICAgICAgICAgPSAtMQpwcmVzZW50cGFyYW1zLmJhY2tidWZmZXJjb3VudCAgICAgICAg
-ICAgICAgICAgICA9IC0xCnByZXNlbnRwYXJhbXMubXVsdGlzYW1wbGV0eXBlICAgICAgICAgICAg
-ICAgICAgID0gLTEKcHJlc2VudHBhcmFtcy5zd2FwZWZmZWN0ICAgICAgICAgICAgICAgICAgICAg
-ICAgPSAtMQpwcmVzZW50cGFyYW1zLmVuYWJsZWF1dG9kZXB0aHN0ZW5jaWwgICAgICAgICAgICA9
-IC0xCnByZXNlbnRwYXJhbXMuYXV0b2RlcHRoc3RlbmNpbGZvcm1hdCAgICAgICAgICAgID0gLTEK
-cHJlc2VudHBhcmFtcy5mbGFncyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPSAtMQpwcmVz
-ZW50cGFyYW1zLmZ1bGxzY3JlZW5fcmVmcmVzaHJhdGVpbmh6ICAgICAgICA9IC0xCnByZXNlbnRw
-YXJhbXMuZnVsbHNjcmVlbl9wcmVzZW50YXRpb25pbnRlcnZhbCAgID0gLTEKYmVoYXZpb3JmbGFn
-cy5mcHVfcHJlc2VydmUgICAgICAgICAgICAgICAgICAgICAgPSAwCgo7LS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCjsgZmZ4aS5yZWdpc3RyeQo7CjsgQ29udGFpbnMg
-Y29uZmlndXJhdGlvbiBzZXR0aW5ncyB1c2VkIHRvIG92ZXJyaWRlIEZpbmFsIEZhbnRhc3kgWEkn
-cyByZWdpc3RyeSBzZXR0aW5ncy4gVGhlc2Ugc2V0dGluZ3MKOyB0YWtlIHByaW9yaXR5IG92ZXIg
-d2hhdCBpcyBhY3R1YWxseSB3aXRoaW4gdGhlIHN5c3RlbSByZWdpc3RyeSBmb3IgdGhlIGdhbWUu
-IEEgdmFsdWUgb2YgLTEgbWVhbnMgdGhhdAo7IEFzaGl0YSB3aWxsIGRlZmF1bHQgdG8gd2hhdCB2
-YWx1ZSBpcyBhbHJlYWR5IGluIHRoZSByZWFsIHJlZ2lzdHJ5IGZvciB0aGUgZ2l2ZW4gc2V0dGlu
-Zy4KOwo7ICAgMDAwMCAtIChudW1iZXIpIERlZmF1bHQ6IC0xCjsgICAgICAgTWlwIE1hcHBpbmcK
-Owo7ICAgICAgIDAgPSBPZmYsIDEgPSBPbjsgTG93ZXN0IFF1YWxpdHksIDYgPSBPbjsgQmVzdCBR
-dWFsaXR5CjsKOyAgIDAwMDEgLSAobnVtYmVyKSBEZWZhdWx0OiAtMQo7ICAgICAgIFdpbmRvdyBX
-aWR0aAo7CjsgICAwMDAyIC0gKG51bWJlcikgRGVmYXVsdDogLTEKOyAgICAgICBXaW5kb3cgSGVp
-Z2h0CjsKOyAgIDAwMDMgLSAobnVtYmVyKSBEZWZhdWx0OiAtMQo7ICAgICAgIEJhY2tncm91bmQg
-V2lkdGgKOwo7ICAgICAgIEJlc3QgaWYgZGl2aXNpYmxlIGJ5IDIuICg0MDk2IHJlY29tbWVuZGVk
-LikKOwo7ICAgMDAwNCAtIChudW1iZXIpIERlZmF1bHQ6IC0xCjsgICAgICAgQmFja2dyb3VuZCBI
-ZWlnaHQKOwo7ICAgICAgIEJlc3QgaWYgZGl2aXNpYmxlIGJ5IDIuICg0MDk2IHJlY29tbWVuZGVk
-LikKOwo7ICAgMDAwNSAtIChudW1iZXIpIERlZmF1bHQ6IC0xCjsgICAwMDA2IC0gKG51bWJlcikg
-RGVmYXVsdDogLTEKOyAgICAgICBVbmtub3duIC8gVW51c2VkCjsKOyAgIDAwMDcgLSAobnVtYmVy
-KSBEZWZhdWx0OiAtMQo7ICAgICAgIFNvdW5kIEVuYWJsZWQKOwo7ICAgICAgIDAgPSBEaXNhYmxl
-ZCwgMSA9IEVuYWJsZWQKOwo7ICAgMDAwOCAtIChudW1iZXIpIERlZmF1bHQ6IC0xCjsgICAwMDA5
-IC0gKG51bWJlcikgRGVmYXVsdDogLTEKOyAgIDAwMTAgLSAobnVtYmVyKSBEZWZhdWx0OiAtMQo7
-ICAgICAgIFVua25vd24gLyBVbnVzZWQKOwo7ICAgMDAxMSAtIChudW1iZXIpIERlZmF1bHQ6IC0x
-CjsgICAgICAgRW52aXJvbm1lbnQgQW5pbWF0aW9ucwo7CjsgICAgICAgIDAgPSBPZmYsIDEgPSBO
-b3JtYWwsIDIgPSBTbW9vdGgKOwo7ICAgMDAxMiAtIChudW1iZXIpIERlZmF1bHQ6IC0xCjsgICAw
-MDEzIC0gKG51bWJlcikgRGVmYXVsdDogLTEKOyAgIDAwMTQgLSAobnVtYmVyKSBEZWZhdWx0OiAt
-MQo7ICAgMDAxNSAtIChudW1iZXIpIERlZmF1bHQ6IC0xCjsgICAwMDE2IC0gKG51bWJlcikgRGVm
-YXVsdDogLTEKOyAgICAgICBVbmtub3duIC8gVW51c2VkCjsKOyAgIDAwMTcgLSAobnVtYmVyKSBE
-ZWZhdWx0OiAtMQo7ICAgICAgIEJ1bXAgTWFwcGluZwo7CjsgICAgICAgMCA9IE9mZiwgMSA9IE9u
-CjsKOyAgIDAwMTggLSAobnVtYmVyKSBEZWZhdWx0OiAtMQo7ICAgICAgIFRleHR1cmUgQ29tcHJl
-c3Npb24KOwo7ICAgICAgIDAgPSBIaWdoLCAxID0gTG93LCAyID0gVW5jb21wcmVzc2VkCjsKOyAg
-IDAwMTkgLSAobnVtYmVyKSBEZWZhdWx0OiAtMQo7ICAgICAgIE1hcCBDb21wcmVzc2lvbgo7Cjsg
-ICAgICAgMCA9IENvbXByZXNzZWQsIDEgPSBVbmNvbXByZXNzZWQKOwo7ICAgMDAyMCAtIChudW1i
-ZXIpIERlZmF1bHQ6IC0xCjsgICAgICAgVW5rbm93biAvIFVudXNlZAo7CjsgICAwMDIxIC0gKG51
-bWJlcikgRGVmYXVsdDogLTEKOyAgICAgICBIYXJkd2FyZSBNb3VzZQo7CjsgICAgICAgMCA9IE9m
-ZiwgMSA9IE9uCjsKOyAgIDAwMjIgLSAobnVtYmVyKSBEZWZhdWx0OiAtMQo7ICAgICAgIFNob3cg
-T3BlbmluZyBNb3ZpZQo7CjsgICAgICAgMCA9IE9mZiwgMSA9IE9uCjsKOyAgIDAwMjMgLSAobnVt
-YmVyKSBEZWZhdWx0OiAtMQo7ICAgICAgIFNpbXBsaWZpZWQgQ2hhcmFjdGVyIENyZWF0aW9uIFZp
-c3VhbHMKOwo7ICAgICAgIDAgPSBPZmYsIDEgPSBPbgo7CjsgICAwMDI0IC0gKG51bWJlcikgRGVm
-YXVsdDogLTEKOyAgIDAwMjUgLSAobnVtYmVyKSBEZWZhdWx0OiAtMQo7ICAgMDAyNiAtIChudW1i
-ZXIpIERlZmF1bHQ6IC0xCjsgICAwMDI3IC0gKG51bWJlcikgRGVmYXVsdDogLTEKOyAgICAgICBV
-bmtub3duIC8gVW51c2VkCjsKOyAgIDAwMjggLSAobnVtYmVyKSBEZWZhdWx0OiAtMQo7ICAgICAg
-IEdhbW1hIEJhc2UKOwo7ICAgICAgIEZsb2F0IGJhc2VkIHZhbHVlLCAwIGlzIHRoZSBkZWZhdWx0
-Lgo7CjsgICAwMDI5IC0gKG51bWJlcikgRGVmYXVsdDogLTEKOyAgICAgICBNYXhpbXVtIE51bWJl
-ciBPZiBTb3VuZHMKOwo7ICAgICAgIDEyID0gTG93ZXN0LCAyMCA9IEhpZ2hlc3QKOwo7ICAgMDAz
-MCAtIChudW1iZXIpIERlZmF1bHQ6IC0xCjsgICAgICAgRW5hYmxlIDNEIExDRCBNb2RlCjsKOyAg
-ICAgICAwID0gRGlzYWJsZWQsIDEgPSBFbmFibGVkCjsKOyAgIDAwMzEgLSAobnVtYmVyKSBEZWZh
-dWx0OiAtMQo7ICAgMDAzMiAtIChudW1iZXIpIERlZmF1bHQ6IC0xCjsgICAwMDMzIC0gKG51bWJl
-cikgRGVmYXVsdDogLTEKOyAgICAgICBVbmtub3duIC8gVW51c2VkCjsKOyAgIDAwMzQgLSAobnVt
-YmVyKSBEZWZhdWx0OiAtMQo7ICAgICAgIFdpbmRvdyBNb2RlCjsKOyAgICAgICAwID0gRnVsbHNj
-cmVlbiwgMSA9IFdpbmRvd2VkLCAzID0gQm9yZGVybGVzcyBXaW5kb3dlZAo7ICAgICAgIDIgPSBG
-dWxsc2NyZWVuIFdpbmRvd2VkIChVbmRvY3VtZW50ZWQuKQo7CjsgICAgICAgTm90ZTogVGhlcmUg
-aXMgYSBidWcgaW4gdGhlIG9mZmljaWFsIGNsaWVudCBoYW5kbGluZyBvZiB0aGlzIHNldHRpbmcg
-d2hlcmUgJ0JvcmRlcmxlc3MgV2luZG93ZWQnIGlzCjsgICAgICAgYWN0dWFsbHkgJ0Z1bGxzY3Jl
-ZW4gV2luZG93ZWQnLCBhbmQgJ0Z1bGxzY3JlZW4gV2luZG93ZWQnIGlzIGFjdHVhbGx5ICdCb3Jk
-ZXJsZXNzIFdpbmRvd2VkJy4KOwo7ICAgMDAzNSAtIChudW1iZXIpIERlZmF1bHQ6IC0xCjsgICAg
-ICAgU291bmQgQWx3YXlzIE9uIChQbGF5IEluIEJhY2tncm91bmQpCjsKOyAgICAgICAwID0gT2Zm
-LCAxID0gT24KOwo7ICAgMDAzNiAtIChudW1iZXIpIERlZmF1bHQ6IC0xCjsgICAgICAgRm9udCBD
-b21wcmVzc2lvbgo7CjsgICAgICAgMCA9IENvbXByZXNzZWQsIDEgPSBVbmNvbXByZXNzZWQsIDIg
-PSBIaWdoIFF1YWxpdHkKOwo7ICAgMDAzNyAtIChudW1iZXIpIERlZmF1bHQ6IC0xCjsgICAgICAg
-TWVudSBXaWR0aAo7CjsgICAgICAgUmVjb21tZW5kZWQgdG8gbWF0Y2ggV2luZG93IFdpZHRoLgo7
-CjsgICAwMDM4IC0gKG51bWJlcikgRGVmYXVsdDogLTEKOyAgICAgICBNZW51IEhlaWdodAo7Cjsg
-ICAgICAgUmVjb21tZW5kZWQgdG8gbWF0Y2ggV2luZG93IEhlaWdodC4KOwo7ICAgMDAzOSAtIChu
-dW1iZXIpIERlZmF1bHQ6IC0xCjsgICAgICAgSU1FIE1vZGUKOwo7ICAgICAgIDAgPSB2MSwgMSA9
-IHYyCjsKOyAgIDAwNDAgLSAobnVtYmVyKSBEZWZhdWx0OiAtMQo7ICAgICAgIEdyYXBoaWNzIFN0
-YWJpbGl6YXRpb24KOwo7ICAgICAgIDAgPSBPZmYsIDEgPSBPbgo7CjsgICAwMDQxIC0gKG51bWJl
-cikgRGVmYXVsdDogLTEKOyAgICAgICBFbmFibGUgQmV0YSBVSQo7CjsgICAgICAgMCA9IERpc2Fi
-bGVkLCAxID0gRW5hYmxlZAo7ICAgICAgIChOb3QgaW4gdGhlIHJldGFpbCBjbGllbnQuKQo7Cjsg
-ICAwMDQyIC0gKHN0cmluZykgRGVmYXVsdDogLTEKOyAgICAgICBEZWZhdWx0IEdhbWUgU2NyZWVu
-c2hvdCBQYXRoCjsKOyAgIDAwNDMgLSAobnVtYmVyKSBEZWZhdWx0OiAtMQo7ICAgICAgIFRha2Ug
-U2NyZWVuc2hvdCBJbiBTY3JlZW4gUmVzb2x1dGlvbgo7CjsgICAgICAgMCA9IE9mZiwgMSA9IE9u
-CjsKOyAgIDAwNDQgLSAobnVtYmVyKSBEZWZhdWx0OiAtMQo7ICAgICAgIE1haW50YWluIFdpbmRv
-dyBBc3BlY3QgUmF0aW8KOwo7ICAgICAgIDAgPSBPZmYsIDEgPSBPbgo7CjsgICAwMDQ1IC0gKG51
-bWJlcikgRGVmYXVsdDogLTEKOyAgICAgICBVbmtub3duIC8gVW51c2VkCjsKOyAgIHBhZG1vZGUw
-MDAgLSAoYXJyYXkpCjsgICAgICAgQXJyYXkgb2YgNiBib29sZWFucyB0aGF0IGNvbnRyb2wgZ2Ft
-ZXBhZCBzZXR0aW5ncy4gU2V0dGluZ3MgYXJlIGluIHRoZSBmb2xsb3dpbmcgb3JkZXI6CjsKOyAg
-ICAgICAtIEVuYWJsZSBHYW1lcGFkICAgICAgICBbMCA9IERpc2FibGVkLCAxID0gRW5hYmxlZF0K
-OyAgICAgICAtIEVuYWJsZSBGb3JjZSBGZWVkYmFjayBbMCA9IERpc2FibGVkLCAxID0gRW5hYmxl
-ZF0KOyAgICAgICAtIEVuYWJsZSBTbGlkZXIgICAgICAgICBbMCA9IERpc2FibGVkLCAxID0gRW5h
-YmxlZF0KOyAgICAgICAtIEVuYWJsZSBIYXQgU3dpdGNoZXMgICBbMCA9IERpc2FibGVkLCAxID0g
-RW5hYmxlZF0KOyAgICAgICAtIEVuYWJsZSBXaGVuIEluYWN0aXZlICBbMCA9IERpc2FibGVkLCAx
-ID0gRW5hYmxlZF0KOyAgICAgICAtIEVuYWJsZSBYSW5wdXQgICAgICAgICBbMCA9IERpc2FibGVk
-LCAxID0gRW5hYmxlZF0KOwo7ICAgcGFkc2luMDAwIC0gKGFycmF5KQo7ICAgICAgIEFycmF5IG9m
-IGJ1dHRvbiBtYXBwaW5ncyB0byBnYW1lIGZ1bmN0aW9ucy4KOy0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpbZmZ4aS5yZWdpc3RyeV0KMDAwMCA9IDYKMDAwMSA9IDE0
-NDAKMDAwMiA9IDkwMCAKMDAwMyA9IDEwMjQgCjAwMDQgPSAxMDI0IAowMDA1ID0gLTEKMDAwNiA9
-IC0xCjAwMDcgPSAxCjAwMDggPSAtMQowMDA5ID0gLTEKMDAxMCA9IC0xCjAwMTEgPSAyCjAwMTIg
-PSAtMQowMDEzID0gLTEKMDAxNCA9IC0xCjAwMTUgPSAtMQowMDE2ID0gLTEKMDAxNyA9IDAKMDAx
-OCA9IDIKMDAxOSA9IDEKMDAyMCA9IDEKMDAyMSA9IDEKMDAyMiA9IDAKMDAyMyA9IDAKMDAyNCA9
-IDAKMDAyNSA9IC0xCjAwMjYgPSAtMQowMDI3ID0gLTEKMDAyOCA9IDAKMDAyOSA9IDEyCjAwMzAg
-PSAwCjAwMzEgPSAxMDAyNzQwNjQ2CjAwMzIgPSAwCjAwMzMgPSAwCjAwMzQgPSAxCjAwMzUgPSAx
-CjAwMzYgPSAyCjAwMzcgPSAxOTIwCjAwMzggPSAxMDgwCjAwMzkgPSAxCjAwNDAgPSAwCjAwNDEg
-PSAxCjAwNDIgPSBDOlxQcm9ncmFtIEZpbGVzICh4ODYpXFNxdWFyZUVuaXhcRklOQUwgRkFOVEFT
-WSBYSQowMDQzID0gMQowMDQ0ID0gMQowMDQ1ID0gMApwYWRtb2RlMDAwID0gMCwxLDEsMSwxLDAK
-cGFkc2luMDAwID0gNCw2LDExLDcsMTAsMSwwLDIsMyw4LC0xLC0xLDksMzMsMzMsMzIsMzIsMzcs
-MzcsMzQsMzQsNDEsNDEsNDAsNDAsNSwtMQoKW3NhbmRib3gucGF0aHNdCmNvbW1vbiA9IEM6XFBy
-b2dyYW0gRmlsZXMgKHg4NilcQ29tbW9uIEZpbGVzCnBvbCAgICA9IC4uXFNxdWFyZUVuaXhcUGxh
-eU9ubGluZVZpZXdlcgpmZnhpICAgPSAuLlxTcXVhcmVFbml4XEZJTkFMIEZBTlRBU1kgWEkK
+cat <<EOF > horizonxi.ini
+;---------------------------------------------------------------------------------------------------
+; Ashita v4 Boot Configurations
+;
+; This file holds the various important settings that are used to configure Ashita. This file is 
+; loaded as soon as Ashita is injected into Final Fantasy XI. Please edit this file with caution!
+;---------------------------------------------------------------------------------------------------
+; Configuration Notes
+;
+;   Every configuration setting in this file is considered optional. This means that Ashita will,
+;   internally, attempt to use default values if one is not given here, or if the one given is
+;   invalid. (However, this does not mean using a blank file will result in a successful launch.)
+;
+;   Depending on your setup and if you're playing on retail or a private server, some settings will
+;   be expected in this file to properly run the game.
+;---------------------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------------------
+; ashita.launcher
+;
+; Contains configuration settings used with the Ashita launcher.
+;
+;   autoclose - (boolean) Default: 1
+;       Sets if the launcher should automatically close after successfully launching this configuration.
+;
+;   name - (string) Default: (empty)
+;       The name of the configuration to display in the launcher.
+;
+;       If left empty, the launcher will use the file name instead.
+;---------------------------------------------------------------------------------------------------
+[ashita.launcher]
+autoclose   = 1
+name        = Example Configuration
+
+;---------------------------------------------------------------------------------------------------
+; ashita.boot
+;
+; Contains configuration settings used with the boot loader and initial startup of the game.
+;
+;   file - (string) Default: (empty)
+;       Sets the boot file to launch to start Final Fantasy XI.
+;
+;       If playing on retail, this can be left empty. Ashita will automatically find a valid install
+;       and launch the game. However, you may want to directly set this still if you have multiple
+;       game installs of FFXI.
+;
+;       If playing on a private server, this should point to the boot loader used with the server.
+;
+;   command - (string) Default: /game eAZcFcB
+;       Sets the boot command that is passed to the boot loader (file) on launch.
+;
+;       If playing on retail, this can be left empty or set to '/game eAZcFcB' to show the quick-play
+;       icon inside of PlayOnline to log into FFXI faster.
+;
+;       If playing on a private server, this should be the commands required by the server you are
+;       playing on in order to properly connect. (Usually the '--server <ip>' command is enough.)
+;
+;   gamemodule - (string) Default: (empty)
+;       Sets the name of the main game module Ashita should use when doing game module lookups.
+;
+;       If left blank, this will resolve to 'FFXiMain.dll'. This should only be changed if the private
+;       server you are playing on has renamed 'FFXiMain.dll' to something else.
+;
+;   script - (string) Default: (empty)
+;       Sets the script file to execute after Ashita has successfully injected into the game.
+;
+;       If left blank, Ashita will not execute any script automatically.
+;
+;   args - (string) Default: (empty)
+;       Sets the script arguments to pass to the 'script' (if set) above when it's executed.
+;
+;       This can be useful if you share a script between multiple characters, but want to use specific
+;       values for token replacements. Such as binds/aliases that use the profiles specific character name.
+;---------------------------------------------------------------------------------------------------
+[ashita.boot]
+; Retail Server Usage
+file        = .\\bootloader\\horizon-loader.exe
+command     = --server betabox.horizonxi.com --user %USER% --pass %PASSWORD% 
+gamemodule  = ffximain.dll
+script      = default.txt
+args        = 
+
+;---------------------------------------------------------------------------------------------------
+; ashita.language
+;
+; Contains configuration settings used to determine which language data is used for defaults.
+;
+;   playonline - (number) Default: 2
+;       Sets the default PlayOnline language the launcher will use when trying to launch retail
+;       and no direct boot file was given.
+;
+;       Valid values are:
+;           0 = Default, 1 = Japanese, 2 = English, 3 = European
+;
+;       If set to 0, Ashita will default to English.
+;
+;   ashita - (number) Default: 2
+;       Sets the default language used with the internal ResourceManager string data.
+;
+;       Valid values are:
+;           0 = Default, 1 = Japanese, 2 = English, 3 = European
+;
+;       If set to 0 or 3, Ashita will default to English. (SE no longer translates strings to European.)
+;---------------------------------------------------------------------------------------------------
+[ashita.language]
+playonline  = 2
+ashita      = 2
+
+;---------------------------------------------------------------------------------------------------
+; ashita.logging
+;
+; Contains configuration settings used for Ashita's debugging/logging features.
+;
+;   level - (number) Defaul: 5
+;       Sets the level of debugging information Ashita will output to its log files.
+;
+;       Valid values are:
+;           0 = None, 1 = Critical, 2 = Error, 3 = Warn, 4 = Info, 5 = Debug
+;
+;   crashdumps - (boolean) Default: 1
+;       Sets if Ashita should create crash dumps automatically when a critical error occurs.
+;---------------------------------------------------------------------------------------------------
+[ashita.logging]
+level       = 5
+crashdumps  = 1
+
+;---------------------------------------------------------------------------------------------------
+; ashita.taskpool
+;
+; Contains configuration settings used with Ashita's internal task queue system.
+;
+;   threadcount - (number) Default: -1
+;       Sets the maximum number of threads the task queue will attempt to use.
+;
+;       If set to 0 or lower, the internal task queue will query the system for the available number of
+;       logical cores and determine the best number of threads to use. It is recommended to leave this
+;       as -1 and let the system determine the best number itself.
+;---------------------------------------------------------------------------------------------------
+[ashita.taskpool]
+threadcount = 24 
+
+;---------------------------------------------------------------------------------------------------
+; ashita.resources
+;
+; Contains configuration settings used with Ashita's custom resource data override configuration files.
+;
+;   offsets.use_overrides - (boolean) Default: 1
+;       Sets if Ashita should load and merge in the custom overrides within the 'custom.offsets.ini'
+;       configuration file.
+;
+;   pointers.use_overrides - (boolean) Default: 1
+;       Sets if Ashita should load and merge in the custom overrides within the 'custom.pointers.ini'
+;       configuration file.
+;
+;   resources.use_overrides - (boolean) Default: 1
+;       Sets if Ashita should load and merge in the custom overrides within the 'custom.resources.ini'
+;       configuration file.
+;---------------------------------------------------------------------------------------------------
+[ashita.resources]
+offsets.use_overrides   = 1
+pointers.use_overrides  = 1
+resources.use_overrides = 1
+
+;---------------------------------------------------------------------------------------------------
+; ashita.window.startpos
+;
+; Contains configuration settings used to set the startup position of the game window.
+;
+;   x - (number) Default: -1
+;       Sets the X screen position to start the game window at.
+;
+;       If set to -1, will use the center X position of the screen.
+;
+;   y - (number) Default: -1
+;       Sets the Y screen position to start the game window at.
+;
+;       If set to -1, will use the center Y position of the screen.
+;---------------------------------------------------------------------------------------------------
+[ashita.window.startpos]
+x = -1
+y = -1
+
+;---------------------------------------------------------------------------------------------------
+; ashita.input
+;
+; Contains configuration settings used with the various input devices to interact with the game.
+;
+;   gamepad.allowbackground - (boolean) Default: 0
+;       Sets if controllers should still work if the game is out of focus.
+;
+;   gamepad.disableenumeration - (boolean) Default: 0
+;       Sets if Ashita should disable the ability for game controllers to be discovered.
+;
+;       This is useful to turn on if you leave controllers enabled but not use one. You may notice a
+;       micro-stutter while playing. Turning this on will usually fix that micro-stutter. However, while
+;       this is on, you will not be able to use a controller until its turned off.
+;
+;   keyboard.blockinput - (boolean) Default: 0
+;       Sets if Ashita should completely disable all keyboard input.
+;
+;   keyboard.blockbindsduringinput - (boolean) Default: 1
+;       Sets if Ashita should ignore keybinds while the game is expecting input.
+;
+;       This will block keybinds while entering chat into the chat box, or editing things like search
+;       comments, bazaar comments, etc.
+;
+;   keyboard.silentbinds - (boolean) Default: 0
+;       Sets if Ashita should announce bind related information, such as setting a new keybind.
+;
+;       If enabled, Ashita will not print bind related messages to the chat log.
+;
+;   keyboard.windowskeyenabled - (boolean) Default: 0
+;       Sets if the Windows key should be enabled and work like normal.
+;
+;   mouse.blockinput - (boolean) Default: 0
+;       Sets if Ashita should completely block all mouse input.
+;
+;   mouse.unhook - (boolean) Default: 1
+;       Sets if Ashita should unhook the mouse from being automatically repositioned by the game
+;       menu system.
+;---------------------------------------------------------------------------------------------------
+[ashita.input]
+gamepad.allowbackground         = 0
+gamepad.disableenumeration      = 0
+keyboard.blockinput             = 0
+keyboard.blockbindsduringinput  = 1
+keyboard.silentbinds            = 0
+keyboard.windowskeyenabled      = 0
+mouse.blockinput                = 0
+mouse.unhook                    = 1
+
+;---------------------------------------------------------------------------------------------------
+; ashita.misc
+;
+; Contains configuration settings used for various Ashita related settings.
+;
+;   addons.silent - (boolean) Default: 0
+;       Sets if Ashita should stop announcing loading and unloading addons to the chat window.
+;
+;   aliases.silent - (boolean) Default: 0
+;       Sets if Ashita should stop announcing alias related command results to the chat window.
+;
+;   plugins.silent - (boolean) Default: 0
+;       Sets if Ashita should stop announcing loading and unloading plugins to the chat window.
+;---------------------------------------------------------------------------------------------------
+[ashita.misc]
+addons.silent   = 0
+aliases.silent  = 0
+plugins.silent  = 0
+
+;---------------------------------------------------------------------------------------------------
+; ashita.polplugins
+;
+; Contains the list of plugins Ashita will launch immediately as it injects. (IPolPlugin instances.)
+; Note: This does not work for normal plugins! This will only work for 'PlayOnline Plugins'.
+;
+; The following format is expected for entries in this section:
+;
+;   [ashita.polplugins]
+;   sandbox = 1
+;
+; The key should be the name of the plugin that should be loaded. The value is a boolean which states 
+; if the plugin is enabled or not.
+;---------------------------------------------------------------------------------------------------
+[ashita.polplugins]
+sandbox = 1
+pivot = 1
+;---------------------------------------------------------------------------------------------------
+; ashita.polplugins.args
+;
+; Contains the plugin-specific arguments to pass to a 'PlayOnline Plugin' when its loaded.
+;
+; The following format is expected for entries in this section:
+;
+;   [ashita.polplugins.args]
+;   sandbox = args1 args2 args3 args4
+;
+; The key should be the name of the plugin that is being loaded. The value should be a string containing
+; the arguments to pass to the plugin. In most cases, plugins will not require any arguments in order to
+; load and operate properly. Please see the individual plugins documentation for any requirements that
+; may be needed here.
+;---------------------------------------------------------------------------------------------------
+[ashita.polplugins.args]
+;sandbox = 
+
+;---------------------------------------------------------------------------------------------------
+; ffxi.direct3d8
+;
+; Contains configuration settings used to override Direct3D8 device creation parameters.
+; Note: This is for advanced users only! Edit with caution!
+;
+;   presentparams.backbufferformat - (number) Default: -1
+;       Sets the back buffer format passed with the device creation present parameters.
+;
+;       If set to -1, the game will use the current value already set.
+;
+;   presentparams.backbuffercount - (number) Default: -1
+;       Sets the back buffer count passed with the device creation present parameters.
+;
+;       If set to -1, the game will use the current value already set.
+;
+;   presentparams.multisampletype - (number) Default: -1
+;       Sets the multisample type passed with the device creation present parameters.
+;
+;       If set to -1, the game will use the current value already set.
+;
+;   presentparams.swapeffect - (number) Default: -1
+;       Sets the swap effect passed with the device creation present parameters.
+;
+;       If set to -1, the game will use the current value already set.
+;
+;   presentparams.enableautodepthstencil - (number) Default: -1
+;       Sets the auto-depth stencil enabled flag passed with the device creation present parameters.
+;
+;       If set to -1, the game will use the current value already set.
+;
+;   presentparams.autodepthstencilformat - (number) Default: -1
+;       Sets the auto-depth stencil format passed with the device creation present parameters.
+;
+;       If set to -1, the game will use the current value already set.
+;
+;   presentparams.flags - (number) Default: -1
+;       Sets the flags passed with the device creation present parameters.
+;
+;       If set to -1, the game will use the current value already set.
+;
+;   presentparams.fullscreen_refreshrateinhz - (number) Default: -1
+;       Sets the fullscreen refresh rate passed with the device creation present parameters.
+;
+;       If set to -1, the game will use the current value already set.
+;
+;   presentparams.fullscreen_presentationinterval - (number) Default: -1
+;       Sets the fullscreen presentation interval passed with the device creation present parameters.
+;
+;       If set to -1, the game will use the current value already set.
+;
+;   behaviorflags.fpu_preserve - (number) Default: 0
+;       Sets if the fpu preserve behavior flag is enabled by force.
+;
+;       If set to -1, the game will use the current value already set.
+;---------------------------------------------------------------------------------------------------
+[ffxi.direct3d8]
+presentparams.backbufferformat                  = -1
+presentparams.backbuffercount                   = -1
+presentparams.multisampletype                   = -1
+presentparams.swapeffect                        = -1
+presentparams.enableautodepthstencil            = -1
+presentparams.autodepthstencilformat            = -1
+presentparams.flags                             = -1
+presentparams.fullscreen_refreshrateinhz        = -1
+presentparams.fullscreen_presentationinterval   = -1
+behaviorflags.fpu_preserve                      = 0
+
+;---------------------------------------------------------------------------------------------------
+; ffxi.registry
+;
+; Contains configuration settings used to override Final Fantasy XI's registry settings. These settings
+; take priority over what is actually within the system registry for the game. A value of -1 means that
+; Ashita will default to what value is already in the real registry for the given setting.
+;
+;   0000 - (number) Default: -1
+;       Mip Mapping
+;
+;       0 = Off, 1 = On; Lowest Quality, 6 = On; Best Quality
+;
+;   0001 - (number) Default: -1
+;       Window Width
+;
+;   0002 - (number) Default: -1
+;       Window Height
+;
+;   0003 - (number) Default: -1
+;       Background Width
+;
+;       Best if divisible by 2. (4096 recommended.)
+;
+;   0004 - (number) Default: -1
+;       Background Height
+;
+;       Best if divisible by 2. (4096 recommended.)
+;
+;   0005 - (number) Default: -1
+;   0006 - (number) Default: -1
+;       Unknown / Unused
+;
+;   0007 - (number) Default: -1
+;       Sound Enabled
+;
+;       0 = Disabled, 1 = Enabled
+;
+;   0008 - (number) Default: -1
+;   0009 - (number) Default: -1
+;   0010 - (number) Default: -1
+;       Unknown / Unused
+;
+;   0011 - (number) Default: -1
+;       Environment Animations
+;
+;        0 = Off, 1 = Normal, 2 = Smooth
+;
+;   0012 - (number) Default: -1
+;   0013 - (number) Default: -1
+;   0014 - (number) Default: -1
+;   0015 - (number) Default: -1
+;   0016 - (number) Default: -1
+;       Unknown / Unused
+;
+;   0017 - (number) Default: -1
+;       Bump Mapping
+;
+;       0 = Off, 1 = On
+;
+;   0018 - (number) Default: -1
+;       Texture Compression
+;
+;       0 = High, 1 = Low, 2 = Uncompressed
+;
+;   0019 - (number) Default: -1
+;       Map Compression
+;
+;       0 = Compressed, 1 = Uncompressed
+;
+;   0020 - (number) Default: -1
+;       Unknown / Unused
+;
+;   0021 - (number) Default: -1
+;       Hardware Mouse
+;
+;       0 = Off, 1 = On
+;
+;   0022 - (number) Default: -1
+;       Show Opening Movie
+;
+;       0 = Off, 1 = On
+;
+;   0023 - (number) Default: -1
+;       Simplified Character Creation Visuals
+;
+;       0 = Off, 1 = On
+;
+;   0024 - (number) Default: -1
+;   0025 - (number) Default: -1
+;   0026 - (number) Default: -1
+;   0027 - (number) Default: -1
+;       Unknown / Unused
+;
+;   0028 - (number) Default: -1
+;       Gamma Base
+;
+;       Float based value, 0 is the default.
+;
+;   0029 - (number) Default: -1
+;       Maximum Number Of Sounds
+;
+;       12 = Lowest, 20 = Highest
+;
+;   0030 - (number) Default: -1
+;       Enable 3D LCD Mode
+;
+;       0 = Disabled, 1 = Enabled
+;
+;   0031 - (number) Default: -1
+;   0032 - (number) Default: -1
+;   0033 - (number) Default: -1
+;       Unknown / Unused
+;
+;   0034 - (number) Default: -1
+;       Window Mode
+;
+;       0 = Fullscreen, 1 = Windowed, 3 = Borderless Windowed
+;       2 = Fullscreen Windowed (Undocumented.)
+;
+;       Note: There is a bug in the official client handling of this setting where 'Borderless Windowed' is
+;       actually 'Fullscreen Windowed', and 'Fullscreen Windowed' is actually 'Borderless Windowed'.
+;
+;   0035 - (number) Default: -1
+;       Sound Always On (Play In Background)
+;
+;       0 = Off, 1 = On
+;
+;   0036 - (number) Default: -1
+;       Font Compression
+;
+;       0 = Compressed, 1 = Uncompressed, 2 = High Quality
+;
+;   0037 - (number) Default: -1
+;       Menu Width
+;
+;       Recommended to match Window Width.
+;
+;   0038 - (number) Default: -1
+;       Menu Height
+;
+;       Recommended to match Window Height.
+;
+;   0039 - (number) Default: -1
+;       IME Mode
+;
+;       0 = v1, 1 = v2
+;
+;   0040 - (number) Default: -1
+;       Graphics Stabilization
+;
+;       0 = Off, 1 = On
+;
+;   0041 - (number) Default: -1
+;       Enable Beta UI
+;
+;       0 = Disabled, 1 = Enabled
+;       (Not in the retail client.)
+;
+;   0042 - (string) Default: -1
+;       Default Game Screenshot Path
+;
+;   0043 - (number) Default: -1
+;       Take Screenshot In Screen Resolution
+;
+;       0 = Off, 1 = On
+;
+;   0044 - (number) Default: -1
+;       Maintain Window Aspect Ratio
+;
+;       0 = Off, 1 = On
+;
+;   0045 - (number) Default: -1
+;       Unknown / Unused
+;
+;   padmode000 - (array)
+;       Array of 6 booleans that control gamepad settings. Settings are in the following order:
+;
+;       - Enable Gamepad        [0 = Disabled, 1 = Enabled]
+;       - Enable Force Feedback [0 = Disabled, 1 = Enabled]
+;       - Enable Slider         [0 = Disabled, 1 = Enabled]
+;       - Enable Hat Switches   [0 = Disabled, 1 = Enabled]
+;       - Enable When Inactive  [0 = Disabled, 1 = Enabled]
+;       - Enable XInput         [0 = Disabled, 1 = Enabled]
+;
+;   padsin000 - (array)
+;       Array of button mappings to game functions.
+;---------------------------------------------------------------------------------------------------
+[ffxi.registry]
+0000 = 6
+0001 = 1440
+0002 = 900 
+0003 = 1024 
+0004 = 1024 
+0005 = -1
+0006 = -1
+0007 = 1
+0008 = -1
+0009 = -1
+0010 = -1
+0011 = 2
+0012 = -1
+0013 = -1
+0014 = -1
+0015 = -1
+0016 = -1
+0017 = 0
+0018 = 2
+0019 = 1
+0020 = 1
+0021 = 1
+0022 = 0
+0023 = 0
+0024 = 0
+0025 = -1
+0026 = -1
+0027 = -1
+0028 = 0
+0029 = 12
+0030 = 0
+0031 = 1002740646
+0032 = 0
+0033 = 0
+0034 = 1
+0035 = 1
+0036 = 2
+0037 = 1920
+0038 = 1080
+0039 = 1
+0040 = 0
+0041 = 1
+0042 = C:\Program Files (x86)\SquareEnix\FINAL FANTASY XI
+0043 = 1
+0044 = 1
+0045 = 0
+padmode000 = 0,1,1,1,1,0
+padsin000 = 4,6,11,7,10,1,0,2,3,8,-1,-1,9,33,33,32,32,37,37,34,34,41,41,40,40,5,-1
+
+[sandbox.paths]
+common = C:\Program Files (x86)\Common Files
+pol    = ..\SquareEnix\PlayOnlineViewer
+ffxi   = ..\SquareEnix\FINAL FANTASY XI
 EOF
 
 sed -i "s/%USER%/$USERNAME/g" horizonxi.ini
