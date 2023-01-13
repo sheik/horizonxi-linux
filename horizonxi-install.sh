@@ -17,10 +17,10 @@ echo "${bold}[i] If asked for password, enter your linux user password${normal}"
 sudo apt-get install -y transmission-cli
 
 echo "${bold}[*] Downloading GE-proton${normal}"
-curl -L -O https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton7-43/GE-Proton7-43.tar.gz
+curl -L -O https://github.com/GloriousEggroll/wine-ge-custom/releases/download/GE-Proton7-35/wine-lutris-GE-Proton7-35-x86_64.tar.xz
 
 echo "${bold}[*] Extracting GE-proton${normal}"
-tar -xzf GE-Proton7-43.tar.gz
+tar -xJf wine-lutris-GE-Proton7-35-x86_64.tar.xz 
 
 echo "${bold}[*] Downloading HorizonXI${normal}"
 tmpfile=$(mktemp)
@@ -419,8 +419,8 @@ mv horizonxi.ini HorizonXI/config/boot/horizonxi.ini
 cat <<'EOF' >> run-horizonxi.sh
 #!/bin/bash
 
-export WINEPREFIX=$(realpath ./GE-Proton7-43/files)
-WINE=$(realpath GE-Proton7-43/files/bin/wine)
+export WINEPREFIX=$(realpath ./lutris-GE-Proton7-35-x86_64/)
+WINE=$(realpath lutris-GE-Proton7-35-x86_64/bin/wine)
 cd HorizonXI && $WINE Ashita-cli.exe horizonxi.ini 
 EOF
 
