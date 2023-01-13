@@ -7,5 +7,7 @@ Welcome to the Unofficial [HorizonXI](https://horizonxi.com) Linux Installer
 Open up a terminal and paste the following in:
 
 ```bash
-curl -s https://raw.githubusercontent.com/sheik/horizonxi-linux/main/horizonxi-install.sh | bash
+curl -O https://raw.githubusercontent.com/sheik/horizonxi-linux/main/horizonxi-install.sh
+chmod +x horizonxi-install.sh
+./horizonxi-install.sh
 ```

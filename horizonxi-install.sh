@@ -1,22 +1,7 @@
 #!/bin/bash
 
-echo "[*] Installing transmission-cli"
-sudo apt-get install -y transmission-cli
-
-echo "[*] Downloading GE-proton"
-curl -L -O https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton7-43/GE-Proton7-43.tar.gz
-
-echo "[*] Extracting GE-proton"
-tar -xzf GE-Proton7-43.tar.gz
-
-echo "[*] Downloading HorizonXI"
-tmpfile=$(mktemp)
-chmod a+x $tmpfile
-echo "killall transmission-cli" > $tmpfile
-transmission-cli -w . -f $tmpfile "magnet:?xt=urn:btih:4eecae8431428820347314bc002492e210f29612&dn=HorizonXI.zip&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=https%3A%2F%2Ftracker.nanoha.org%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.lilithraws.org%3A443%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=https%3A%2F%2Fopentracker.i2p.rocks%3A443%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.tracker.vraphim.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fmovies.zsw.ca%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2810%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fexplodie.org%3A6969"
-
-echo "[*] Extracting HorizonXI"
-unzip -q HorizonXI.zip
+bold=$(tput bold)
+normal=$(tput sgr0)
 
 echo -n "Enter your HorizonXI username: "
 read USERNAME
@@ -25,6 +10,27 @@ echo -n "Enter your HorizonXI password: "
 read -s PASSWORD
 
 echo
+
+
+echo "${bold}[*] Installing transmission-cli${normal}"
+echo "${bold}[i] If asked for password, enter your linux user password${normal}"
+sudo apt-get install -y transmission-cli
+
+echo "${bold}[*] Downloading GE-proton${normal}"
+curl -L -O https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton7-43/GE-Proton7-43.tar.gz
+
+echo "${bold}[*] Extracting GE-proton${normal}"
+tar -xzf GE-Proton7-43.tar.gz
+
+echo "${bold}[*] Downloading HorizonXI${normal}"
+tmpfile=$(mktemp)
+chmod a+x $tmpfile
+echo "killall transmission-cli" > $tmpfile
+transmission-cli -w . -f $tmpfile "magnet:?xt=urn:btih:4eecae8431428820347314bc002492e210f29612&dn=HorizonXI.zip&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=https%3A%2F%2Ftracker.nanoha.org%3A443%2Fannounce&tr=https%3A%2F%2Ftracker.lilithraws.org%3A443%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=https%3A%2F%2Fopentracker.i2p.rocks%3A443%2Fannounce&tr=udp%3A%2F%2Ftracker1.bt.moack.co.kr%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fpublic.tracker.vraphim.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fmovies.zsw.ca%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2810%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fexplodie.org%3A6969"
+
+echo "${bold}[*] Extracting HorizonXI${normal}"
+unzip -q HorizonXI.zip
+
 
 # base64 encoded horizonxi.ini
 base64 -d <<EOF > horizonxi.ini
@@ -421,8 +427,8 @@ EOF
 chmod +x run-horizonxi.sh
 
 echo
-echo "HorizonXI is installed. To run the game, execute:"
-echo "  ./run-horizonxi.sh"
+echo "${bold}HorizonXI is installed. To run the game, execute:"
+echo "  ./run-horizonxi.sh${normal}"
 echo
 
 
