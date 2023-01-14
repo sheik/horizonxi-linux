@@ -6,7 +6,7 @@ This repo contains an installer HorizonXI on Linux.
 
 ## How to Install
 
-[Download the latest HorizonXI Linux Installer here](https://github.com/sheik/horizonxi-linux/releases/download/v0.0.2/horizonxi-installer)
+[Download the latest HorizonXI Linux Installer here](https://github.com/sheik/horizonxi-linux/releases/download/v0.0.3/horizonxi-installer)
 
 Once downloaded, you need to mark it as executable:
 
