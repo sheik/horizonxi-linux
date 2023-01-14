@@ -4,6 +4,7 @@ cd "$(dirname "$0")"
 export WINEPREFIX=$(realpath ./lutris-GE-Proton7-35-x86_64/)
 export WINEDEBUG=-all
 export __GL_THREADED_OPTIMIZATIONS=1
+export mesa_glthread=true
 WINE=$(realpath lutris-GE-Proton7-35-x86_64/bin/wine)
 
 cat <<EOF
@@ -26,7 +27,13 @@ if [[ "$?" -ne 0 ]]; then
 	echo -n "Password: "
 	read -s PASSWORD
 
+	# username and pass has to be put into ini file
+	# Ashita launches in a different thread so STDIN cannot be read
 	sed -i "s/^command.*$/command = --server betabox.horizonxi.com --user $USERNAME --pass $PASSWORD/g" HorizonXI/config/boot/horizonxi.ini
+
+	# if not reduced, this setting will cause entities to be invisible
+	sed -i "s/0003 = 4096/0003 = 2048/g" HorizonXI/config/boot/horizonxi.ini
+	sed -i "s/0004 = 4096/0004 = 2048/g" HorizonXI/config/boot/horizonxi.ini
 fi
 
 # run HorizonXI
