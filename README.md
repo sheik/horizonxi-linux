@@ -20,3 +20,18 @@ Finally, you can run the installer from the terminal as well:
 ./Downloads/horizonxi-installer
 ```
 
+Once it is done installing, you can run the game from the terminal with the following command:
+
+```bash
+$HOME/HorizonXI/horizonxi
+```
+
+## Troubleshooting
+
+If you run into a problem while installing, you can try removing the install directory and running the installer again:
+
+```bash
+rm -rf $HOME/HorizonXI
+
+./Downloads/horizonxi-installer
+```
