@@ -32,6 +32,10 @@ If you run into a problem while installing, you can try removing the install dir
 
 ```bash
 rm -rf $HOME/HorizonXI
+```
 
+Then:
+
+```bash
 ./Downloads/horizonxi-installer
 ```
