@@ -106,8 +106,19 @@ func main() {
 	InstallDgVoodoo2()
 	InstallDXVK()
 	LargeAddressPatch(path.Join(*installPath, "HorizonXI/bootloader/horizon-loader.exe"))
+	Enable60FPS()
 	InstallLauncher()
 	log.Printf("install complete -- to play, run %s/horizonxi", *installPath)
+}
+
+func Enable60FPS() {
+	log.Print("enabling 60fps")
+	f, err := os.OpenFile(path.Join(*installPath, "HorizonXI/scripts/default.txt"), os.O_RDWR|os.O_APPEND, 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
+	f.WriteString("\n/fps 1\n")
 }
 
 func InstallDXVK() {
