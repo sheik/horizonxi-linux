@@ -63,4 +63,19 @@ https://github.com/sheik/horizonxi-linux/blob/4c455018030d6bffe6f7cc7db273355616
 
 ### Step 3. Unzip HorizonXI.zip into the install directory (default is ~/HorizonXI)
 
+### Step 4. Install GE-Wine
+
+### Step 5. Install DgVoodoo2
+
+### Step 6. Install [DXVK](https://github.com/doitsujin/dxvk) (Direct3D 9-11 -> Vulkan)
+
+### Step 7. Patch HorizonXI bootloader to support large address spaces
+
+https://github.com/sheik/horizonxi-linux/blob/4c455018030d6bffe6f7cc7db273355616ffa8f7/cmd/horizonxi-installer/main.go#L264
+
+### Step 8. Enable 60 FPS by default
+
+### Step 9. Install launcher script
+
+
 
