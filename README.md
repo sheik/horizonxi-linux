@@ -48,3 +48,11 @@ Then:
 ```bash
 ./Downloads/horizonxi-installer
 ```
+
+## Installer Details
+
+I thought it might be helpful to explain exactly what the installer is doing so that steps can be replicated by hand if necessary.
+
+### Step 1. Download HorizonXI data via bittorrent (HorizonXI.zip)
+
+https://github.com/sheik/horizonxi-linux/blob/4c455018030d6bffe6f7cc7db273355616ffa8f7/cmd/horizonxi-installer/main.go#L30
