@@ -65,19 +65,27 @@ https://github.com/sheik/horizonxi-linux/blob/4c455018030d6bffe6f7cc7db273355616
 
 ### Step 4. Install GE-Wine
 
-### Step 5. Install [DgVoodoo2](http://dege.freeweb.hu/dgVoodoo2/dgVoodoo2/)
+### Step 5. Install DgVoodoo2 (enables graphics card)
 
-DgVoodoo2 is an implementation of DirectX/Direct3d/glide APIs that converts them to more modern APIs.
+[DgVoodoo2](http://dege.freeweb.hu/dgVoodoo2/dgVoodoo2/) is an implementation of DirectX/Direct3d/glide APIs that converts them to more modern APIs.
 
 This will allow HorizonXI to run on your graphics card instead of the CPU.
 
-### Step 6. Install [DXVK](https://github.com/doitsujin/dxvk) (Direct3D 9-11 -> Vulkan)
+### Step 6. Install DXVK (Direct3D 9-11 -> Vulkan)
+
+[DXVK](https://github.com/doitsujin/dxvk) is another translation layer that translates Direct3D API calls to Vulkan API calls.
+
+This will allow HorizonXI to run better on Linux.
 
 ### Step 7. Patch HorizonXI bootloader to support large address spaces
 
 https://github.com/sheik/horizonxi-linux/blob/4c455018030d6bffe6f7cc7db273355616ffa8f7/cmd/horizonxi-installer/main.go#L264
 
+This will prevent blackscreens when zoning in-game.
+
 ### Step 8. Enable 60 FPS by default
+
+This sets the FPS divisor to 1, which allows a max of 60FPS by default instead of 30FPS.
 
 ### Step 9. Install launcher script
 
