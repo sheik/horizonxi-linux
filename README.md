@@ -67,7 +67,8 @@ https://github.com/sheik/horizonxi-linux/blob/4c455018030d6bffe6f7cc7db273355616
 
 ### Step 5. Install DgVoodoo2 (enables graphics card)
 
-[DgVoodoo2](http://dege.freeweb.hu/dgVoodoo2/dgVoodoo2/) is an implementation of DirectX/Direct3d/glide APIs that converts them to more modern APIs.
+[DgVoodoo2](http://dege.freeweb.hu/dgVoodoo2/dgVoodoo2/) is a translation layer that translates older
+DirectX/Direct3d/glide APIs into newer versions of those APIs.
 
 This will allow HorizonXI to run on your graphics card instead of the CPU.
 
