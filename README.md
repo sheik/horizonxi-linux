@@ -65,7 +65,11 @@ https://github.com/sheik/horizonxi-linux/blob/4c455018030d6bffe6f7cc7db273355616
 
 ### Step 4. Install GE-Wine
 
-### Step 5. Install DgVoodoo2
+### Step 5. Install [DgVoodoo2](http://dege.freeweb.hu/dgVoodoo2/dgVoodoo2/)
+
+DgVoodoo2 is an implementation of DirectX/Direct3d/glide APIs that converts them to more modern APIs.
+
+This will allow HorizonXI to run on your graphics card instead of the CPU.
 
 ### Step 6. Install [DXVK](https://github.com/doitsujin/dxvk) (Direct3D 9-11 -> Vulkan)
 
