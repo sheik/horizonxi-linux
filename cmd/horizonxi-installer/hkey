@@ -1,0 +1,17 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+mkdir -p .wine
+
+export WINEPREFIX=$(realpath ./.wine/)
+export WINEARCH=win32
+export WINEDEBUG=-all
+export __GL_THREADED_OPTIMIZATIONS=1
+export mesa_glthread=true
+WINE=$(realpath lutris-GE-Proton7-35-x86_64/bin/wine)
+
+# run HorizonXI
+$WINE reg add 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v d3d8 /d native /f >/dev/null 2>&1
+$WINE reg add 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v d3d9 /d native /f >/dev/null 2>&1
+$WINE reg add 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v d3dimm /d native /f >/dev/null 2>&1
+$WINE reg add 'HKEY_CURRENT_USER\Software\Wine\DllOverrides' /v ddraw /d native /f >/dev/null 2>&1
