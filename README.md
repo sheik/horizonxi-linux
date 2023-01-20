@@ -56,3 +56,11 @@ I thought it might be helpful to explain exactly what the installer is doing so 
 ### Step 1. Download HorizonXI data via bittorrent (HorizonXI.zip)
 
 https://github.com/sheik/horizonxi-linux/blob/4c455018030d6bffe6f7cc7db273355616ffa8f7/cmd/horizonxi-installer/main.go#L30-L32
+
+https://github.com/sheik/horizonxi-linux/blob/4c455018030d6bffe6f7cc7db273355616ffa8f7/cmd/horizonxi-installer/main.go#L231
+
+### Step 2. Verify SHA256 hash of HorizonXI.zip
+
+### Step 3. Unzip HorizonXI.zip into the install directory (default is ~/HorizonXI)
+
+
