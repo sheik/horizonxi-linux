@@ -26,6 +26,15 @@ Once it is done installing, you can run the game from the terminal with the foll
 $HOME/HorizonXI/horizonxi
 ```
 
+## Provid your own data file
+
+Optionally, if you already have HorizonXI.zip downloaded via a different method, you can supply it as an argument to the
+installer so that you do not need to download it again:
+
+```bash
+./horizonxi-installer -d /path/to/HorizonXI.zip
+```
+
 ## Troubleshooting
 
 If you run into a problem while installing, you can try removing the install directory and running the installer again:
