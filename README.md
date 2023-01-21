@@ -51,17 +51,22 @@ Then:
 
 I thought it might be helpful to explain exactly what the installer is doing so that steps can be replicated by hand if necessary.
 
-#### Step 1. Download HorizonXI data via bittorrent (HorizonXI.zip)
+#### 1. Download HorizonXI
+
+The HorizonXI data files (HorizonXI.zip) are downlaoded via bittorrent. This is the current magnet link:
 
 https://github.com/sheik/horizonxi-linux/blob/4c455018030d6bffe6f7cc7db273355616ffa8f7/cmd/horizonxi-installer/main.go#L30-L32
 
-https://github.com/sheik/horizonxi-linux/blob/4c455018030d6bffe6f7cc7db273355616ffa8f7/cmd/horizonxi-installer/main.go#L231
+#### 2. Verify Files
 
-#### Step 2. Verify SHA256 hash of HorizonXI.zip
+After download (or if files are supplied by user), the data files are run through an integrity check using SHA256.
 
 #### Step 3. Unzip HorizonXI.zip into the install directory (default is ~/HorizonXI)
 
 #### Step 4. Install GE-Wine
+
+[https://github.com/GloriousEggroll/wine-ge-custom](wine-ge-custom) is a version of wine that is built from the most
+recent bleeding-edge proton experimental wine repo.
 
 #### Step 5. Install DgVoodoo2 (enables graphics card)
 
