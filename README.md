@@ -65,7 +65,7 @@ After download (or if files are supplied by user), the data files are run throug
 
 #### Step 4. Install GE-Wine
 
-[https://github.com/GloriousEggroll/wine-ge-custom](wine-ge-custom) is a version of wine that is built from the most
+[wine-ge-custom](https://github.com/GloriousEggroll/wine-ge-custom) is a version of wine that is built from the most
 recent bleeding-edge proton experimental wine repo.
 
 #### Step 5. Install DgVoodoo2 (enables graphics card)
