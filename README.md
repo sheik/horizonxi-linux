@@ -63,7 +63,7 @@ After download (or if files are supplied by user), the data files are run throug
 
 #### Step 3. Unzip HorizonXI.zip into the install directory (default is ~/HorizonXI)
 
-#### Step 4. Install GE-Wine
+#### Step 4. Install wine-ge-custom
 
 [wine-ge-custom](https://github.com/GloriousEggroll/wine-ge-custom) is a version of wine that is built from the most
 recent bleeding-edge proton experimental wine repo.
